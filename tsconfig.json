@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
+    "target": "es5", // 컴퓨터에게 오래된 버전의 JavaScript로 코드를 바꾸라고 말해요.
+    "lib": ["dom", "dom.iterable", "esnext"], // 웹 페이지와 새로운 JavaScript 기능들을 알려줘요.
+    "allowJs": true, // JavaScript 파일도 사용할 수 있게 해줘요.
+    "skipLibCheck": true, // 라이브러리의 세세한 타입 체크를 하지 않아요. 속도를 빠르게 해줘요.
+    "strict": true, // 엄격한 규칙으로 코드를 확인해요. 오류를 덜 만들게 도와줘요.
+    "forceConsistentCasingInFileNames": true, // 파일 이름의 대소문자를 일관되게 해야 해요.
+    "noEmit": true, // TypeScript를 JavaScript로 바꾼 파일을 만들지 않아요.
+    "esModuleInterop": true, // 다른 형태의 JavaScript 코드와 잘 어울리게 해줘요.
+    "module": "esnext", // 최신 JavaScript 모듈 방식을 사용해요.
+    "moduleResolution": "node", // Node.js 방식으로 파일을 찾아요.
+    "resolveJsonModule": true, // JSON 파일을 쉽게 사용할 수 있게 해줘요.
+    "isolatedModules": true, // 각 파일을 독립적으로 다뤄요. 오류를 줄여줘요.
+    "jsx": "preserve", // JSX(웹 페이지를 만드는 코드)를 그대로 유지해요.
+    "incremental": true, // 빌드(코드를 컴퓨터가 이해할 수 있게 만드는 과정)를 빠르게 해줘요.
+    "baseUrl": ".", // 기본 경로를 지금 있는 폴더로 해요.
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"] // 특정 경로를 간단하게 줄여서 쓸 수 있게 해줘요.
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"], // 이 파일들은 TypeScript가 확인해요.
+  "exclude": ["node_modules"] // 이 폴더는 TypeScript가 무시해요.
 }

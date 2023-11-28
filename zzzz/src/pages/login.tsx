@@ -39,8 +39,8 @@ const LoginPage = () => {
               />
             ) : null}
             <div className="flex flex-col items-center justify-center px-2 mt-8 sm:mt-0">
-              <h2 className="mt-2 text-5xl font-bold leading-tight inter">SWIFT</h2>
-              <div className="mt-1 text-lg text-gray-400">Admin System</div>
+              <h2 className="mt-2 text-5xl font-bold leading-tight inter">동대문 스위프트</h2>
+              <div className="mt-1 text-lg text-gray-400">(주)스위프트서포터</div>
             </div>
 
             <div className="w-full px-2 mt-12 sm:px-6">
