@@ -21,6 +21,11 @@ const LoginForm = () => {
 
     try {
       console.log(value);
+      await signIn("login-credentials", {
+        username: value.username,
+        password: value.password,
+        callbackUrl: "https://main.d1uhtyk1uahovi.amplifyapp.com/"
+      });
       await signIn("login-credentials", { username: value.username, password: value.password });
     } catch (error) {
       setIsLoading(false);
