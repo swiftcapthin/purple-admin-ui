@@ -16,21 +16,20 @@ const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
 
-  const handleFinish = useCallback(async (value: ILoginFormValue) => {
-    setIsLoading(true);
-
-    try {
-      console.log(value);
-      await signIn("login-credentials", {
-        username: value.username,
-        password: value.password,
-        callbackUrl: "https://main.d1uhtyk1uahovi.amplifyapp.com/"
-      });
-      await signIn("login-credentials", { username: value.username, password: value.password });
-    } catch (error) {
-      setIsLoading(false);
-    }
-  }, []);
+ const handleFinish = useCallback(async (value: ILoginFormValue) => {
+  setIsLoading(true);
+  try {
+    console.log(value);
+    await signIn("login-credentials", {
+      username: value.username,
+      password: value.password,
+      callbackUrl: "https://your-deployed-app-url.com/" // 여기에 실제 배포된 애플리케이션 URL 사용
+    });
+  } catch (error) {
+    console.error(error);
+    setIsLoading(false);
+  }
+}, []);
 
   function handleSignup(values: any): void {
     throw new Error("Function not implemented.");
