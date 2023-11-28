@@ -3,7 +3,7 @@ import { Alert, Button, Form, Input } from "antd";
 import { useForm } from "antd/lib/form/Form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState } from 'react';
 
 interface ILoginFormValue {
   username: string;
@@ -27,6 +27,10 @@ const LoginForm = () => {
     }
   }, []);
 
+  function handleSignup(values: any): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <>
       {router?.query.error && router?.query.error !== "CredentialsSignin" ? (
@@ -34,7 +38,7 @@ const LoginForm = () => {
           <Alert message={`로그인 중 오류가 발생했습니다. ${router?.query.error}`} type="warning" />
         </div>
       ) : null}
-      <div className="grid grid-cols-2 gap-4">
+      {/*<div className="grid grid-cols-2 gap-4">
         <a className="flex items-center justify-center h-20 grow btn" onClick={() => signIn("google")}>
           <svg width="29" height="29" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -66,11 +70,11 @@ const LoginForm = () => {
           </svg>
         </a>
       </div>
-      <div className="my-5 text-lg text-center text-gray-400">or</div>
+      <div className="my-5 text-lg text-center text-gray-400">or</div>*/}
       <Form<ILoginFormValue>
         form={form}
         layout="vertical"
-        initialValues={{ username: "admin", password: "admin" }}
+        initialValues={{ username: "", password: "" }}
         onFinish={handleFinish}
       >
         <div className="mb-3">
@@ -91,17 +95,83 @@ const LoginForm = () => {
         </Form.Item>
 
         <Button size="large" type="primary" htmlType="submit" className="w-full" loading={isLoading}>
-          로그인
+         로그인
         </Button>
 
-        <a className="inline-block mt-2 text-gray-400" onClick={() => setShowPasswordModal(true)}>
-          비밀번호 찾기
-        </a>
+        <div className="flex justify-between mt-2">
+         <a className="text-gray-400" onClick={() => setShowPasswordModal(true)}>
+           아이디/비밀번호 찾기
+         </a>
+         <a className="text-gray-400" onClick={() => setShowPasswordModal(true)}>
+           회원가입
+         </a>
+       </div>
       </Form>
 
-      <DefaultModal title="비밀번호 찾기" open={showPasswordModal} handleHide={() => setShowPasswordModal(false)}>
-        🔑 임시 로그인 정보는 admin / admin 입니다.
-      </DefaultModal>
+      {/* 비밀번호 찾기 모달 */}
+      <DefaultModal title="회원가입" open={showPasswordModal} handleHide={() => setShowPasswordModal(false)}>
+      <div>
+        안녕하세요 셀러님! 스위프트를 찾아주셔서 감사합니다! <br/><br/>
+        팀 스위프트는 셀러님의 최고의 파트너가 되어, 풍부하고 만족스러운 고객경험을 만들기 위해 끊임없이 노력하고 있습니다. <br/><br/>
+        스위프트가 셀러님의 성장을 도와드릴 것을 약속드립니다.
+        <br/><br/>
+        <p className="mt-4 mb-2 font-semibold">회원가입</p>
+        <Form layout="vertical" onFinish={handleSignup}>
+          <Form.Item label="업체명" name="companyName" rules={[{ required: true, message: "업체명을 입력해주세요" }]}>
+            <Input placeholder="업체명(쇼핑몰)" />
+          </Form.Item>
+          <Form.Item label="사업자번호" name="businessNumber" rules={[{ required: true, message: "사업자번호를 입력해주세요" }]}>
+            <Input placeholder="사업자번호" />
+          </Form.Item>
+          <Form.Item label="로그인 아이디" name="loginId" rules={[{ required: true, message: "로그인 아이디를 입력해주세요" }]}>
+            <Input placeholder="로그인 아이디" />
+          </Form.Item>
+          <Form.Item label="비밀번호" name="password" rules={[{ required: true, message: "비밀번호를 입력해주세요" }]}>
+            <Input placeholder="비밀번호" type="password" />
+          </Form.Item>
+          <Form.Item 
+            label="비밀번호 확인" 
+            name="confirmPassword" 
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+              { required: true, message: "비밀번호 확인을 입력해주세요" },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('비밀번호가 일치하지 않습니다'));
+                },
+              }),
+            ]}
+          >
+            <Input placeholder="비밀번호 확인" type="password" />
+          </Form.Item>
+          <Form.Item label="이메일" name="email" rules={[{ required: true, message: "이메일을 입력해주세요" }]}>
+            <Input placeholder="이메일" />
+          </Form.Item>
+          <Form.Item label="사용자 이름" name="username" rules={[{ required: true, message: "사용자 이름을 입력해주세요" }]}>
+            <Input placeholder="사용자 이름" />
+          </Form.Item>
+          <Form.Item label="담당자 연락처" name="contactNumber" rules={[{ required: true, message: "담당자 연락처를 입력해주세요" }]}>
+            <Input placeholder="담당자 연락처" />
+          </Form.Item>
+          <Form.Item label="은행명" name="bankName" rules={[{ required: true, message: "은행명을 입력해주세요" }]}>
+            <Input placeholder="은행명" />
+          </Form.Item>
+          <Form.Item label="계좌번호" name="accountNumber" rules={[{ required: true, message: "계좌번호를 입력해주세요" }]}>
+            <Input placeholder="계좌번호" />
+          </Form.Item>
+          <Form.Item label="예금주" name="accountHolder" rules={[{ required: true, message: "예금주를 입력해주세요" }]}>
+            <Input placeholder="예금주" />
+          </Form.Item>
+          <Button type="primary" htmlType="submit">
+            회원가입
+          </Button>
+        </Form>
+      </div>
+    </DefaultModal>
     </>
   );
 };
