@@ -96,7 +96,7 @@ const LoginForm = () => {
         </Form.Item>
 
         <Button size="large" type="primary" htmlType="submit" className="w-full" loading={isLoading}>
-         로그인93D4F4
+         로그인
         </Button>
 
         <div className="flex justify-between mt-2">
