@@ -1,13 +1,13 @@
-import { IProduct, useProducts } from "@/client/sample/product";
-import DefaultTable from "@/components/shared/ui/default-table";
-import DefaultTableBtn from "@/components/shared/ui/default-table-btn";
-import { ISO8601DateTime } from "@/types/common";
-import { Alert, Button, Dropdown, MenuProps, Popconfirm } from "antd";
-import { ColumnsType } from "antd/es/table";
-import dayjs from "dayjs";
-import { Download } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { IProduct, useProducts } from "@/client/sample/product"; // IProduct 인터페이스와 useProducts 훅을 가져옴. 상품 데이터 관련 기능 제공.
+import DefaultTable from "@/components/shared/ui/default-table"; // DefaultTable 컴포넌트를 가져옴. 표준 테이블 레이아웃을 제공.
+import DefaultTableBtn from "@/components/shared/ui/default-table-btn"; // DefaultTableBtn 컴포넌트를 가져옴. 테이블에서 사용할 버튼 UI 제공.
+import { ISO8601DateTime } from "@/types/common"; // ISO8601DateTime 타입을 가져옴. 날짜와 시간 형식을 정의.
+import { Alert, Button, Dropdown, MenuProps, Popconfirm } from "antd"; // Ant Design 라이브러리에서 여러 컴포넌트를 가져옴. UI 구성에 사용.
+import { ColumnsType } from "antd/es/table"; // Ant Design의 table에서 사용되는 컬럼 타입 정의를 가져옴.
+import dayjs from "dayjs"; // dayjs 라이브러리를 가져옴. 날짜 처리에 사용.
+import { Download } from "lucide-react"; // lucide-react에서 Download 아이콘을 가져옴. 다운로드 관련 UI 아이콘 제공.
+import Link from "next/link"; // Next.js의 Link 컴포넌트를 가져옴. 클라이언트 사이드 내비게이션 제공.
+import { useRouter } from "next/router"; // Next.js의 useRouter 훅을 가져옴. 라우팅 관련 기능 제공.
 import numeral from "numeral";
 import React, { useCallback, useMemo, useState } from "react";
 
@@ -85,7 +85,7 @@ const ProductList = () => {
             <span>{value}</span>
           </span>
         );
-      },
+      }, 
     },
     {
       title: "금액",
@@ -103,7 +103,7 @@ const ProductList = () => {
       width: 100,
     },
     {
-      title: "생성일시",
+      title: "주문일시",
       dataIndex: "createdAt",
       align: "center",
       width: 120,

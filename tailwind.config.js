@@ -41,6 +41,9 @@ module.exports = {
       ],
     },
     extend: {
+       padding: {
+        '28': '7rem', // 7rem은 예시입니다. 실제 필요한 크기에 맞게 조정하세요.
+      },
       colors: {
         "antd-form": "#d9d9d9", // 여기서는 색깔들을 설정해요.
         brand: "#63489a", // 예를 들어, 'brand'라는 이름으로 어떤 색깔을 정할 수 있어요.

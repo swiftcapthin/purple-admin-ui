@@ -1,76 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface IGradientBgProps {
   className?: string;
 }
 
 const GradientBg = ({ className }: IGradientBgProps) => {
+  const images = ["/logo1.png", "/logo2.png", "/logo3.png"]; // 이미지 경로 배열
+  const [currentImageIndex, setCurrentImageIndex] = useState(0); // 현재 이미지 인덱스
+
+  // 이미지 컨테이너 스타일
+  const containerStyle: React.CSSProperties = {
+    width: '100%', 
+    height: '100vh', 
+    overflow: 'hidden',
+    position: 'relative' // 상대적 위치 지정
+  };
+
+  // 이미지 스타일
+  const imageStyle: React.CSSProperties = {
+    height: '100%', 
+    width: 'auto', 
+    minWidth: '100%', 
+    objectFit: 'cover',
+    objectPosition: 'center',
+    position: 'absolute', // 절대적 위치 지정
+    left: 0,
+    top: 0,
+    transition: 'opacity 1s ease-in-out', // 1초 동안 부드러운 투명도 변경
+    opacity: 0 // 기본적으로 투명하게 설정
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // 3초마다 이미지 변경
+
+    return () => clearInterval(timer); // 컴포넌트 unmount 시 타이머 정리
+  }, [images.length]);
+
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" className={className}>
-      <defs>
-        <linearGradient id="a" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="red">
-            <animate
-              attributeName="stop-color"
-              values="red;purple;blue;green;yellow;orange;red;"
-              dur="20s"
-              repeatCount="indefinite"
-            ></animate>
-          </stop>
-          <stop offset=".5" stopColor="purple">
-            <animate
-              attributeName="stop-color"
-              values="purple;blue;green;yellow;orange;red;purple;"
-              dur="20s"
-              repeatCount="indefinite"
-            ></animate>
-          </stop>
-          <stop offset="1" stopColor="blue">
-            <animate
-              attributeName="stop-color"
-              values="blue;green;yellow;orange;red;purple;blue;"
-              dur="20s"
-              repeatCount="indefinite"
-            ></animate>
-          </stop>
-          <animateTransform
-            attributeName="gradientTransform"
-            type="rotate"
-            from="0 .5 .5"
-            to="360 .5 .5"
-            dur="20s"
-            repeatCount="indefinite"
-          />
-        </linearGradient>
-        <linearGradient id="b" gradientUnits="objectBoundingBox" x1="0" y1="1" x2="1" y2="1">
-          <stop offset="0" stopColor="red">
-            <animate
-              attributeName="stop-color"
-              values="red;purple;blue;green;yellow;orange;red;"
-              dur="20s"
-              repeatCount="indefinite"
-            ></animate>
-          </stop>
-          <stop offset="1" stopColor="purple" stopOpacity="0">
-            <animate
-              attributeName="stop-color"
-              values="purple;blue;green;yellow;orange;red;purple;"
-              dur="20s"
-              repeatCount="indefinite"
-            ></animate>
-          </stop>
-          <animateTransform
-            attributeName="gradientTransform"
-            type="rotate"
-            values="360 .5 .5;0 .5 .5"
-            dur="10s"
-            repeatCount="indefinite"
-          />
-        </linearGradient>
-      </defs>
-      <rect fill="url(#a)" width="100%" height="100%" />
-      <rect fill="url(#b)" width="100%" height="100%" />
-    </svg>
+    <div className={`image-container ${className}`} style={containerStyle}>
+      {images.map((image, index) => (
+        <img
+          key={image}
+          src={image}
+          style={{
+            ...imageStyle,
+            opacity: index === currentImageIndex ? 1 : 0 // 현재 인덱스의 이미지만 보이게 설정
+          }}
+          alt={`Logo ${index + 1}`}
+        />
+      ))}
+    </div>
   );
 };
 

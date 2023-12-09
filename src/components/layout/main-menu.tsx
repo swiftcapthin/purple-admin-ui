@@ -1,5 +1,5 @@
 import { Divider } from "antd";
-import { Home, Monitor, Package2 } from "lucide-react";
+import { Heart, Home, Monitor, Package2, Truck } from "lucide-react";
 import React from "react";
 import Menu, { IMenu } from "./nav";
 
@@ -14,15 +14,78 @@ const mainMenuData: IMenu[] = [
   },
   {
     id: "product",
-    name: "상품 관리",
+    name: "내 상품 관리",
     icon: <Package2 className="w-5 h-5" />,
     submenu: [
       {
         id: "productList",
-        name: "상품 목록",
+        name: "사입/검수 요청하기",
         link: {
           path: "/sample/product/list",
         },
+        
+      },
+      {
+        id: "productList",
+        name: "사입/검수 처리내역",
+        link: {
+          path: "ㅇㅇ",
+        },
+        
+      },
+      {
+        id: "productList",
+        name: "입고/재고 관리",
+        link: {
+          path: "ㅇㅇ",
+        },
+        
+      },
+    ],
+  },
+  {
+    id: "product",
+    name: "택배관리",
+    icon: <Truck  className="w-5 h-5" />,
+    submenu: [
+      {
+        id: "productList",
+        name: "택배 발송요청",
+        link: {
+          path: "/sample/product/list",
+        },
+        
+      },
+      {
+        id: "productList",
+        name: "택배 발송내역",
+        link: {
+          path: "ㅇㅇ",
+        },
+        
+      },
+            {
+        id: "productList",
+        name: "반품 접수하기",
+        link: {
+          path: "ㅇㅇ",
+        },
+        
+      },
+    ],
+  },
+   {
+    id: "Heart",
+    name: "고객 만족도 높이기!",
+    icon: <Heart className="w-5 h-5" />,
+    submenu: [
+      {
+        id: "productList",
+        name: "포장 추가하기",
+        link: {
+          path: "/sample/product/list",
+        },
+        
       },
     ],
   },
