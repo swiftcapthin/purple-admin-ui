@@ -29,7 +29,7 @@ const mainMenuData: IMenu[] = [
         id: "productList",
         name: "사입/검수 처리내역",
         link: {
-          path: "ㅇㅇ",
+          path: "/sample/product/list",
         },
         
       },

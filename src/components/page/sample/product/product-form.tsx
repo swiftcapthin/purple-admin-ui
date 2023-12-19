@@ -1,4 +1,4 @@
-  import { IProductFormValue, createProduct, updateProduct } from "@/client/sample/product";
+import { IProductFormValue, createProduct, updateProduct } from "@/client/sample/product";
 import CodemirrorEditor from "@/components/shared/form/control/codemirror-editor";
 import QuillEditor from "@/components/shared/form/control/quill-editor";
 import DefaultForm from "@/components/shared/form/ui/default-form";
@@ -42,19 +42,6 @@ import React, { useState } from "react";
         <DefaultForm<IProductFormValue> form={form} initialValues={initialValues} onFinish={handleFinish}>
             
             <FormSection title="매장정보" description="상품 기본 정보를 입력해주세요">
-            {/*
-            <FormGroup title="판매상태*">
-              <Form.Item name="status" rules={[{ required: true, message: "필수값입니다" }]}>
-                <Radio.Group>
-                  <Radio value="SALE">판매중</Radio>
-                  <Radio value="SOLDOUT">재고없음</Radio>
-                  <Radio value="NOTSALE">판매중지</Radio>
-                </Radio.Group>
-              </Form.Item>
-            </FormGroup>
-            */}
-            <Divider />
-
             <FormGroup title="상가*">
               <Form.Item name="brand" rules={[{ required: true, message: "필수값입니다" }]}>
                 <Select style={{ maxWidth: 200 }} placeholder="브랜드를 선택하세요">
@@ -91,7 +78,7 @@ import React, { useState } from "react";
 
             <Divider />
 
-            <FormGroup title="상품명*">
+            <FormGroup title="호수*(영수증/신상마켓)">
               <Form.Item name="name" rules={[{ required: true, message: "필수값입니다" }]}>
                 <Input placeholder="상품명을 입력하세요" />
               </Form.Item>
@@ -113,7 +100,10 @@ import React, { useState } from "react";
               </Form.Item>
             </FormGroup>
           </FormSection>
+          <FormSection title="상품 정보" description="상품 상세 정보를 입력해주세요">
 
+            
+          </FormSection>
           <FormSection title="상품상세" description="상품 상세 정보를 입력해주세요">
             <FormGroup title="상품상세">
               <Form.Item name="description">

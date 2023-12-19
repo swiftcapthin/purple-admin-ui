@@ -1,15 +1,15 @@
 // 필요한 모듈과 컴포넌트를 임포트합니다.
 import { useDashboard } from "@/client/sample/dashboard"; // 대시보드 데이터 가져오기
 import { getDefaultLayout, IDefaultLayoutPage, IPageHeader } from "@/components/layout/default-layout"; // 기본 레이아웃 설정
+import ImageComponent from '@/components/layout/home-benner';
 import CalendarSample from "@/components/page/index/calendar-sample"; // 달력 샘플 컴포넌트
 import StatisticSample from "@/components/page/index/statistic-sample"; // 통계 샘플 컴포넌트
 import { useAuth } from "@/lib/auth/auth-provider"; // 인증 제공자 사용
 import { Alert, Divider, Skeleton } from "antd"; // Ant Design UI 컴포넌트
 
-
 // 페이지 헤더 설정
 const pageHeader: IPageHeader = {
-  title: "Welcome",
+  title: "",
   adImageUrl: undefined
 };
 
@@ -21,6 +21,8 @@ const IndexPage: IDefaultLayoutPage = () => {
 
   return (
     <>
+      
+      <ImageComponent />
       {/* 사용자 환영 메시지 */}
       <h2 className="title">👋 {session.user.name || "관리자"}님 안녕하세요!</h2>
       
@@ -38,14 +40,24 @@ const IndexPage: IDefaultLayoutPage = () => {
 
       <Divider />
     {/* Flexbox 스타일을 인라인으로 적용하여 왼쪽에 고정 */}
-    <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
-      <div style={{ flex: '0 0 60%' }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row', // 기본적으로 가로 방향
+      flexWrap: 'wrap', // 내용이 넘칠 경우 다음 줄로 이동
+      justifyContent: 'flex-start',
+      width: '100%'
+    }}>
+      <div> {/* 최소 너비 설정 */}
         <h3 className="title">달력</h3>
         <CalendarSample />
       </div>
+      
     </div>
+    
     </>
+    
   );
+  
 };
 
 IndexPage.getLayout = getDefaultLayout; // 페이지의 레이아웃 설정
